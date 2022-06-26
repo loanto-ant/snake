@@ -1,0 +1,78 @@
+* {
+   font-family: "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+}
+img {
+   vertical-align: bottom;
+   width: 30px;
+   height: 30px;
+}
+
+#score {
+   width: 200px;
+   text-align: right;
+}
+button {
+   font-size: 15px;
+   height: 27px;
+   margin: 5px 0px;
+}
+header {
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   width: 660px;
+   margin-bottom: 15px;
+}
+body {
+   display: flex;
+   justify-content: center;
+   background-image: url(images/background2.jpg);
+}
+#main {
+   overflow-x: hidden;
+}
+@media (prefers-color-scheme: dark) {
+   body {
+      background-image: url(images/background3.jpg);
+   }
+   * {
+      color: whitesmoke;
+   }
+   button {
+      background-color: rgb(29, 29, 29);
+   }
+}
+#info {
+   width: 660px;
+}
+dialog {
+   background-color: transparent;
+   width: 660px;
+   box-sizing: border-box;
+   position: static;
+   padding: 5px;
+   margin: 8px 0px;
+}
+h2 {
+   margin: 10px 0px 5px 0px;
+}
+h4 {
+   text-transform: uppercase;
+}
+.fehler {
+   font-weight: bold;
+   text-decoration: underline;
+}
+.erklärung {
+   font-style: italic;
+}
+#info span {
+   cursor: default;
+}
+/*obe 100 + spielfeld 660*/
+.name {
+   display: inline;
+}
+.punkte {
+   float: right;
+}

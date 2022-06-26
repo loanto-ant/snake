@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <meta charset="UTF-8" />
+      <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <title>Document</title>
+      <script>
+         fetch("leaderboard.json")
+            .then((results) => results.json())
+            .then((data) => {
+               console.log(data);
+            });
+
+         //console.log(board[0].name + " " + board[0].score);
+         //console.log(board[1].name + " " + board[1].score);
+      </script>
+   </head>
+   <body>
+      <div id="out"></div>
+   </body>
+</html>
