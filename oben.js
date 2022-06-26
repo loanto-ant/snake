@@ -36,6 +36,9 @@ document.onkeydown = function (event) {
    if (event.key == "+") {
       window.location.reload(true);
    }
+   if (direction.length > 3) {
+      direction.pop();
+   }
 };
 function fehlerblatt() {
    var dialog = document.getElementById("fehlerblatt_dialog");
