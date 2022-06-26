@@ -5,35 +5,35 @@ direction = new Array();
 direction[0] = 1;
 document.onkeydown = function (event) {
    //Rechts: 39; links: 37; Unten: 40; Oben: 38
-   if (event.keyCode == 68 || event.keyCode == 39) {
+   if (event.key == "d" || event.key == "ArrowRight") {
       direction.unshift(1);
       var audio = new Audio("audio/rechts.mp3");
       audio.volume = lautstärke;
       audio.play();
       //move();
-   } else if (event.keyCode == 87 || event.keyCode == 38) {
+   } else if (event.key == "w" || event.key == "ArrowUp") {
       direction.unshift(-22);
       var audio = new Audio("audio/oben.mp3");
       audio.volume = lautstärke;
       audio.play();
       //move();
-   } else if (event.keyCode == 65 || event.keyCode == 37) {
+   } else if (event.key == "a" || event.key == "ArrowLeft") {
       direction.unshift(-1);
       var audio = new Audio("audio/links.mp3");
       audio.volume = lautstärke;
       audio.play();
       //move();
-   } else if (event.keyCode == 83 || event.keyCode == 40) {
+   } else if (event.key == "s" || event.key == "ArrowDown") {
       direction.unshift(22);
       var audio = new Audio("audio/unten.mp3");
       audio.volume = lautstärke;
       audio.play();
       //move();
    }
-   if (event.keyCode == 32) {
+   if (event.key == " ") {
       alert("Pause");
    }
-   if (event.keyCode == 171) {
+   if (event.key == "+") {
       window.location.reload(true);
    }
 };

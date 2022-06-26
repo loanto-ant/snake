@@ -46,6 +46,7 @@ document.images[first].src = "images/schlange_glied.png";
 
 var snake = new Array();
 snake[0] = first;
+snake[1] = first - 1;
 
 //Food Startposition finden
 while (document.images[first].src != blank) {
@@ -62,6 +63,14 @@ var rotation = new Array();
 document.getElementById("score").innerHTML = "Score: 0 | Highscore: " + cookie(counter);
 
 function move() {
+   if (
+      direction[0] + 2 == direction[1] ||
+      direction[0] - 2 == direction[1] ||
+      direction[0] + 44 == direction[1] ||
+      direction[0] - 44 == direction[1]
+   ) {
+      direction[0] = direction[1];
+   }
    var index = snake[0] + direction[0];
    if (document.images[index].src == blank) {
       // Endeintrag wegnehmen
@@ -110,7 +119,7 @@ function move() {
          document.images[first_rotten].src = "images/rotten_apple2.png";
          document.images[first_rotten].style.transform = "rotate(0deg)";
       }
-   } else if (index == snake[1]) {
+   } /*else if (index == snake[1]) {
       index = snake[0] + direction[1];
       // Endeintrag wegnehmen
       var ende = snake.pop();
@@ -122,7 +131,7 @@ function move() {
       //Neue Position vorne dran
       snake.unshift(index);
       var spiel = setTimeout("move()", geschwindigkeit);
-   } else {
+   }*/ else {
       var audio = new Audio("audio/game_over.mp3");
       audio.volume = lautstärke;
       audio.play();
