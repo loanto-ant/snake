@@ -39,11 +39,10 @@ for (var i = 0; i < 22; i++) {
 //Snake Ausgangsposition bestimmem
 var first = 0;
 var blank = document.images[23].src;
-while (document.images[first].src != blank || first % 22 > 11) {
+do {
    first = Math.floor(Math.random() * 483);
-}
+} while (document.images[first - 1].src != blank || first % 22 > 11);
 document.images[first].src = "images/schlange_glied.png";
-
 var snake = new Array();
 snake[0] = first;
 snake[1] = first - 1;
@@ -58,6 +57,8 @@ var food = document.images[first].src;
 var counter = 0;
 var rotten_counter = 0;
 var rotation = new Array();
+var verboten_rotten = new Array();
+verboten_rotten = [24, 41, 45, 64, 419, 438, 442, 459];
 
 //Counter mit Highscore init
 document.getElementById("score").innerHTML = "Score: 0 | Highscore: " + cookie(counter);
@@ -114,7 +115,7 @@ function move() {
       if (counter > 10 && zufallszahl > 0.7 && rotten_counter < 6) {
          do {
             first_rotten = Math.floor(Math.random() * 483);
-         } while (document.images[first_rotten].src != blank);
+         } while (document.images[first_rotten].src != blank || verboten_rotten.includes(first_rotten));
          rotten_counter++;
          document.images[first_rotten].src = "images/rotten_apple2.png";
          document.images[first_rotten].style.transform = "rotate(0deg)";
