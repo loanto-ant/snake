@@ -196,3 +196,5 @@ function leaderboardAnzeigen() {
          document.getElementById("board").innerHTML = output;
       });
 }
+
+console.log("Siuuuu");

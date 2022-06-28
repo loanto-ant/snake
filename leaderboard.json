@@ -1,17 +1,14 @@
 [
    {
       "name": "Sonja",
-      "score": 78,
-      "platz": 1
+      "score": 78
    },
    {
       "name": "Lorenz",
-      "score": 67,
-      "platz": 2
+      "score": 67
    },
    {
       "name": "Rudi",
-      "score": 63,
-      "platz": 3
+      "score": 63
    }
 ]

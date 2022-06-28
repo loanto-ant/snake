@@ -10,7 +10,7 @@
    <body>
       <div id="main">
          <h1>Snake</h1>
-         <button onClick="start()">Starten</button>
+         <button onClick="window.location.reload()">Starten</button>
          <button onClick="leaderboardAnzeigen()">Leaderboard</button>
          <dialog closed id="leaderboard_dialog">
             <h2>Leaderboard</h2>
@@ -29,13 +29,14 @@
 
             <p id="score"></p>
          </header>
-         <div id="spielfeld"></div>
 
          <script src="unten.js"></script>
          <p id="info">
             WASD oder Pfeiltasten zum <span onclick="fehlerblatt()">B</span>ewegen, Spacebar für Pause, Plus für neues
             Spiel, Verrottete Äpfel sind giftig!
          </p>
+         <button onclick="steuerung('t')">Hoch</button>
+         <button onclick="test('', 'w')">Test</button>
          <dialog closed id="fehlerblatt_dialog">
             <h2>Fehlerblatt</h2>
             <h4>R-Fehler</h4>
