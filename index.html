@@ -10,7 +10,7 @@
    <body>
       <div id="main">
          <h1>Snake</h1>
-         <button onClick="window.location.reload(true)">Starten</button>
+         <button onClick="start()">Starten</button>
          <button onClick="leaderboardAnzeigen()">Leaderboard</button>
          <dialog closed id="leaderboard_dialog">
             <h2>Leaderboard</h2>
@@ -29,6 +29,7 @@
 
             <p id="score"></p>
          </header>
+         <div id="spielfeld"></div>
 
          <script src="unten.js"></script>
          <p id="info">

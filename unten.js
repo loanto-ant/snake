@@ -18,7 +18,6 @@ slider_v.oninput = function status_v() {
    label_v.innerHTML = slider_v.value * 100;
    lautstärke = slider_v.value;
 };
-
 //Ausgabe des Spielfeldes
 for (var i = 0; i < 22; i++) {
    document.write('<img src="images/end3.png">');
@@ -120,19 +119,7 @@ function move() {
          document.images[first_rotten].src = "images/rotten_apple2.png";
          document.images[first_rotten].style.transform = "rotate(0deg)";
       }
-   } /*else if (index == snake[1]) {
-      index = snake[0] + direction[1];
-      // Endeintrag wegnehmen
-      var ende = snake.pop();
-
-      //im Spielfeld einfügen
-      document.images[index].src = "images/schlange_glied.png";
-      document.images[ende].src = "images/blank3.png";
-
-      //Neue Position vorne dran
-      snake.unshift(index);
-      var spiel = setTimeout("move()", geschwindigkeit);
-   }*/ else {
+   } else {
       var audio = new Audio("audio/game_over.mp3");
       audio.volume = lautstärke;
       audio.play();
@@ -177,4 +164,35 @@ function cookie(score) {
       return score;
    }
    return highscore;
+}
+function fehlerblatt() {
+   var dialog = document.getElementById("fehlerblatt_dialog");
+   if (dialog.hasAttribute("open")) {
+      dialog.close();
+   } else if (dialog.hasAttribute("closed")) {
+      dialog.show();
+   }
+}
+function leaderboardAnzeigen() {
+   var dialog_l = document.getElementById("leaderboard_dialog");
+   if (dialog_l.hasAttribute("open")) {
+      dialog_l.close();
+   } else if (dialog_l.hasAttribute("closed")) {
+      dialog_l.show();
+   }
+   fetch("leaderboard.json")
+      .then((results) => results.json())
+      .then((data) => {
+         var output = "";
+         for (var l = 0; l < data.length; l++) {
+            output +=
+               '<div class="person"> <p class="name">' +
+               data[l].name +
+               '</p> <span class="punkte">' +
+               data[l].score +
+               "</span> </div>";
+         }
+
+         document.getElementById("board").innerHTML = output;
+      });
 }

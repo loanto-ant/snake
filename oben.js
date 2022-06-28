@@ -3,6 +3,7 @@ var lautstärke = 1;
 //Direction
 direction = new Array();
 direction[0] = 1;
+//Direction
 document.onkeydown = function (event) {
    //Rechts: 39; links: 37; Unten: 40; Oben: 38
    if (event.key == "d" || event.key == "ArrowRight") {
@@ -40,34 +41,3 @@ document.onkeydown = function (event) {
       direction.pop();
    }
 };
-function fehlerblatt() {
-   var dialog = document.getElementById("fehlerblatt_dialog");
-   if (dialog.hasAttribute("open")) {
-      dialog.close();
-   } else if (dialog.hasAttribute("closed")) {
-      dialog.show();
-   }
-}
-function leaderboardAnzeigen() {
-   var dialog_l = document.getElementById("leaderboard_dialog");
-   if (dialog_l.hasAttribute("open")) {
-      dialog_l.close();
-   } else if (dialog_l.hasAttribute("closed")) {
-      dialog_l.show();
-   }
-   fetch("leaderboard.json")
-      .then((results) => results.json())
-      .then((data) => {
-         var output = "";
-         for (var l = 0; l < data.length; l++) {
-            output +=
-               '<div class="person"> <p class="name">' +
-               data[l].name +
-               '</p> <span class="punkte">' +
-               data[l].score +
-               "</span> </div>";
-         }
-
-         document.getElementById("board").innerHTML = output;
-      });
-}
