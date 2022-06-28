@@ -5,26 +5,27 @@ direction = new Array();
 direction[0] = 1;
 //Direction
 document.onkeydown = function (event) {
+   var taste = event.key.toLowerCase();
    //Rechts: 39; links: 37; Unten: 40; Oben: 38
-   if (event.key == "d" || event.key == "ArrowRight") {
+   if (taste == "d" || event.key == "ArrowRight") {
       direction.unshift(1);
       var audio = new Audio("audio/rechts.mp3");
       audio.volume = lautstärke;
       audio.play();
       //move();
-   } else if (event.key == "w" || event.key == "ArrowUp") {
+   } else if (taste == "w" || event.key == "ArrowUp") {
       direction.unshift(-22);
       var audio = new Audio("audio/oben.mp3");
       audio.volume = lautstärke;
       audio.play();
       //move();
-   } else if (event.key == "a" || event.key == "ArrowLeft") {
+   } else if (taste == "a" || event.key == "ArrowLeft") {
       direction.unshift(-1);
       var audio = new Audio("audio/links.mp3");
       audio.volume = lautstärke;
       audio.play();
       //move();
-   } else if (event.key == "s" || event.key == "ArrowDown") {
+   } else if (taste == "s" || event.key == "ArrowDown") {
       direction.unshift(22);
       var audio = new Audio("audio/unten.mp3");
       audio.volume = lautstärke;
