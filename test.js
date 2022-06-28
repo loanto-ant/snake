@@ -7,10 +7,12 @@ const fs = require("fs");
    console.log(data);
 });*/
 
-const content = "something interesting";
-fs.writeFile("test.txt", content, (err) => {
-   if (err) {
-      console.error;
-      return;
-   }
-});
+function write(data) {
+   const content = data;
+   fs.writeFile("test.txt", content, (err) => {
+      if (err) {
+         console.error;
+         return;
+      }
+   });
+}
