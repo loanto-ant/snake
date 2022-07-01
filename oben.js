@@ -36,7 +36,7 @@ document.onkeydown = function (event) {
       alert("Pause");
    }
    if (event.key == "+") {
-      window.location.reload(true);
+      start();
    }
    if (direction.length > 3) {
       direction.pop();

@@ -18,49 +18,29 @@ slider_v.oninput = function status_v() {
    label_v.innerHTML = slider_v.value * 100;
    lautstärke = slider_v.value;
 };
-//Ausgabe des Spielfeldes
-for (var i = 0; i < 22; i++) {
-   document.write('<img src="images/end3.png">');
-}
-document.write("<br>");
-for (var j = 0; j < 20; j++) {
-   document.write('<img src="images/end3.png">');
-   for (var u = 0; u < 20; u++) {
-      document.write('<img src="images/blank3.png">');
-   }
-   document.write('<img src="images/end3.png">');
-   document.write("<br>");
-}
-for (var i = 0; i < 22; i++) {
-   document.write('<img src="images/end3.png">');
-}
-
-//Snake Ausgangsposition bestimmem
-var first = 0;
-var blank = document.images[23].src;
-do {
-   first = Math.floor(Math.random() * 483);
-} while (document.images[first - 1].src != blank || first % 22 > 11);
-document.images[first].src = "images/schlange_glied.png";
-var snake = new Array();
-snake[0] = first;
-snake[1] = first - 1;
-
-//Food Startposition finden
-while (document.images[first].src != blank) {
-   first = Math.floor(Math.random() * 483);
-}
-document.images[first].src = "images/apfel.png";
-var food = document.images[first].src;
-
-var counter = 0;
-var rotten_counter = 0;
-var rotation = new Array();
-var verboten_rotten = new Array();
-verboten_rotten = [24, 41, 45, 64, 419, 438, 442, 459];
-
 //Counter mit Highscore init
-document.getElementById("score").innerHTML = "Score: 0 | Highscore: " + cookie(counter);
+document.getElementById("score").innerHTML = "Score: 0 | Highscore: " + cookie(0);
+function spielfeld() {
+   var output = "";
+   //Ausgabe des Spielfeldes
+   for (var i = 0; i < 22; i++) {
+      output += '<img src="images/end3.png">';
+   }
+   output += "<br>";
+   for (var j = 0; j < 20; j++) {
+      output += '<img src="images/end3.png">';
+      for (var u = 0; u < 20; u++) {
+         output += '<img src="images/blank3.png">';
+      }
+      output += '<img src="images/end3.png">';
+      output += "<br>";
+   }
+   for (var i = 0; i < 22; i++) {
+      output += '<img src="images/end3.png">';
+   }
+   document.getElementById("spielfeld").innerHTML = output;
+}
+spielfeld();
 
 function move() {
    if (
@@ -149,7 +129,7 @@ function move() {
    document.images[snake[snake.length - 1]].style.transform = "rotate(" + rotation[rotation.length] + ")";
    document.images[first].style.transform = "rotate(0deg)";
 }
-move();
+//move();
 
 function cookie(score) {
    //checken if counter > cookie highscore
@@ -164,6 +144,37 @@ function cookie(score) {
       return score;
    }
    return highscore;
+}
+function start() {
+   spielfeld();
+   //Snake Ausgangsposition bestimmem
+   first = 0;
+   blank = document.images[23].src;
+   do {
+      first = Math.floor(Math.random() * 483);
+   } while (document.images[first - 1].src != blank || first % 22 > 11);
+   document.images[first].src = "images/schlange_glied.png";
+   snake = new Array();
+   snake[0] = first;
+   snake[1] = first - 1;
+
+   //Food Startposition finden
+   while (document.images[first].src != blank) {
+      first = Math.floor(Math.random() * 483);
+   }
+   document.images[first].src = "images/apfel.png";
+   food = document.images[first].src;
+
+   counter = 0;
+   rotten_counter = 0;
+   rotation = new Array();
+   verboten_rotten = new Array();
+   verboten_rotten = [24, 41, 45, 64, 419, 438, 442, 459];
+   //Counter mit Highscore init
+   document.getElementById("score").innerHTML = "Score: 0 | Highscore: " + cookie(counter);
+   direction[0] = 1;
+
+   move();
 }
 function fehlerblatt() {
    var dialog = document.getElementById("fehlerblatt_dialog");
@@ -196,5 +207,3 @@ function leaderboardAnzeigen() {
          document.getElementById("board").innerHTML = output;
       });
 }
-
-console.log("Siuuuu");
