@@ -87,6 +87,7 @@ function move() {
          audio.volume = lautstärke;
          audio.play();
          document.getElementById("score").innerHTML = "ABSOLUTE CHAD";
+         chad();
       }
 
       //Verrottete Äpfel
@@ -206,4 +207,8 @@ function leaderboardAnzeigen() {
 
          document.getElementById("board").innerHTML = output;
       });
+}
+function chad() {
+   document.querySelector("body").style.backgroundImage = "url(images/gigachad.jpg)";
+   document.querySelector("body").style.backgroundSize = "10%";
 }
