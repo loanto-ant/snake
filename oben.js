@@ -12,13 +12,12 @@ document.onkeydown = function (event) {
       var audio = new Audio("audio/rechts.mp3");
       audio.volume = lautstärke;
       audio.play();
-      //move();
    } else if (taste == "w" || event.key == "ArrowUp") {
       direction.unshift(-22);
       var audio = new Audio("audio/oben.mp3");
       audio.volume = lautstärke;
       audio.play();
-      //move();
+      event.preventDefault();
    } else if (taste == "a" || event.key == "ArrowLeft") {
       direction.unshift(-1);
       var audio = new Audio("audio/links.mp3");
@@ -30,7 +29,7 @@ document.onkeydown = function (event) {
       var audio = new Audio("audio/unten.mp3");
       audio.volume = lautstärke;
       audio.play();
-      //move();
+      event.preventDefault();
    }
    if (event.key == " ") {
       alert("Pause");

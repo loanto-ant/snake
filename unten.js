@@ -204,7 +204,8 @@ function leaderboardAnzeigen() {
                data[l].score +
                "</span> </div>";
          }
-
+         output +=
+            "<p>Du willst auch auf das Leaderboard? Dann schreib mir. Automatisch geht es nicht weil scuffed und so.</p>";
          document.getElementById("board").innerHTML = output;
       });
 }
