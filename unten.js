@@ -92,10 +92,10 @@ function move() {
 
       //Verrottete Äpfel
       var zufallszahl = Math.random();
-      if (counter > 10 && zufallszahl > 0.7 && rotten_counter < 6) {
+      if (counter > 10 && zufallszahl > 0 && rotten_counter < 6) {
          do {
             first_rotten = Math.floor(Math.random() * 483);
-         } while (document.images[first_rotten].src != blank || verboten_rotten.includes(first_rotten));
+         } while (spawn(index));
          rotten_counter++;
          document.images[first_rotten].src = "images/rotten_apple2.png";
          document.images[first_rotten].style.transform = "rotate(0deg)";
@@ -173,6 +173,7 @@ function start() {
    verboten_rotten = [24, 41, 45, 64, 419, 438, 442, 459];
    //Counter mit Highscore init
    document.getElementById("score").innerHTML = "Score: 0 | Highscore: " + cookie(counter);
+   direction.length = 0;
    direction[0] = 1;
 
    move();
@@ -212,4 +213,14 @@ function leaderboardAnzeigen() {
 function chad() {
    document.querySelector("body").style.backgroundImage = "url(images/gigachad.jpg)";
    document.querySelector("body").style.backgroundSize = "10%";
+}
+function spawn(position) {
+   var pos = new Array();
+   pos[0] = position + direction[0];
+   pos[1] = position + 2 * direction[0];
+
+   if (document.images[first_rotten].src == blank) return false;
+   else if (verboten_rotten.includes(first_rotten)) return false;
+   else if (pos.includes(first_rotten)) return false;
+   else return true;
 }
