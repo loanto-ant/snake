@@ -43,12 +43,7 @@ function spielfeld() {
 spielfeld();
 
 function move() {
-   if (
-      direction[0] + 2 == direction[1] ||
-      direction[0] - 2 == direction[1] ||
-      direction[0] + 44 == direction[1] ||
-      direction[0] - 44 == direction[1]
-   ) {
+   if (direction[0] * -1 == direction[1]) {
       direction[0] = direction[1];
    }
    var index = snake[0] + direction[0];
@@ -100,7 +95,21 @@ function move() {
          document.images[first_rotten].src = "images/rotten_apple2.png";
          document.images[first_rotten].style.transform = "rotate(0deg)";
       }
-   } else {
+   } /*else if (direction[0] == direction[2] * -1) {
+      console.log("Surprise");
+      //direction[0] = direction[1];
+
+      // Endeintrag wegnehmen
+      var ende = snake.pop();
+
+      //im Spielfeld einfügen
+      document.images[index].src = "images/schlange_glied.png";
+      document.images[ende].src = "images/blank3.png";
+
+      //Neue Position vorne dran
+      snake.unshift(index);
+      var spiel = setTimeout("move()", geschwindigkeit);
+   } */ else {
       var audio = new Audio("audio/game_over.mp3");
       audio.volume = lautstärke;
       audio.play();
@@ -223,4 +232,17 @@ function spawn(position) {
    else if (verboten_rotten.includes(first_rotten)) return false;
    else if (pos.includes(first_rotten)) return false;
    else return true;
+}
+function gegenteil(wert) {
+   return wert * -1;
+   /*switch (wert) {
+      case -1:
+         return 1;
+      case 1:
+         return -1;
+      case 22:
+         return -22;
+      case -22:
+         return 22;
+   }*/
 }
